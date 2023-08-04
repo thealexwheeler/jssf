@@ -1,0 +1,7 @@
+{
+	"name": "Jekyll",
+	"image": "thealexwheeler/jssf",
+	"appPort": ["4000:4000"],
+	"postCreateCommand": "npm run setup",
+	"runArgs": ["--network=host"]
+}
