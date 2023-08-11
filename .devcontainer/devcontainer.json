@@ -1,7 +1,7 @@
 {
 	"name": "Jekyll",
 	"image": "thealexwheeler/jssf",
-	"appPort": ["4000:4000"],
+	"appPort": ["3000:3000", "3001:3001"],
 	"postCreateCommand": "npm run setup",
-	"runArgs": ["--network=host"]
+	"runArgs": ["--network=bridge", "--name=jssf"]
 }
