@@ -2,9 +2,16 @@ name: Build Docker Image
 
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - 'main'
+    paths:
+      - 'Dockerfile'
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - 'main'
+    paths:
+      - 'Dockerfile'
+  release:
 
 jobs:
   push_to_registry:
@@ -19,12 +26,17 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    
+              
     - name: Extract metadata for Docker
       id: meta
       uses: docker/metadata-action@v4
       with:
         images: thealexwheeler/jssf
+        tags:
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=semver,pattern={{major}}
+          type=edge,branch=main
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
