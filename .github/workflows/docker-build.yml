@@ -32,7 +32,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: thealexwheeler/jssf
-        tags:
+        tags: |
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
           type=semver,pattern={{major}}
