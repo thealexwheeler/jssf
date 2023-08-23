@@ -1,16 +1,20 @@
 var vendorincludes = {};
 
+// Include a path to the vendor file you want to copy/include i.e. vendorincludes.scssCopy = ['node_modules/dependancy/styles.scss'];
+
 // Specify include paths for any vendor sass includes
-vendorincludes.scss = ['node_modules/bootstrap/scss/',
-'node_modules/@fortawesome/fontawesome-free/scss/'];
+vendorincludes.scssInclude = [];
 
-// Specify vendor js that will be added to the main javascript file
-vendorincludes.js = ['node_modules/bootstrap/dist/js/bootstrap.bundle.js'];
+// Specify vendor sass/css to be copied from source folder
+vendorincludes.scssCopy = [];
 
-// Specify vendor fonts to be included to fonts folder
-vendorincludes.fonts = ['node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2',
-'node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2',
-'node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2',
-'node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2'];
+// Specify vendor js that will be merged into to the main javascript file
+vendorincludes.jsMerge = [];
+
+// Specify vendor js to be copied from source folder (replace the void glob placeholder)
+vendorincludes.jsCopy = ['void'];
+
+// Specify vendor fonts to be copied to the fonts folder
+vendorincludes.fontCopy = [];
 
 module.exports = vendorincludes;

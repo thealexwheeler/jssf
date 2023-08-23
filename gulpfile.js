@@ -9,6 +9,11 @@ var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var cssnano = require ('cssnano');
 var uglify = require('gulp-uglify');
+var purgecss = require('gulp-purgecss');
+var mode = require('gulp-mode')({
+    modes: ["production", "development"],
+    default: "development"
+});
 var browserSync = require('browser-sync').create();
 
 
@@ -16,10 +21,11 @@ var browserSync = require('browser-sync').create();
 function buildStyles() {
     var plugins = [autoprefixer(),
         cssnano()]
-    return gulp.src(`${paths.sassFilesGlob}`)
-        .pipe(sass({includePaths: [paths.sassPartialsFolderName].concat(vendorincludes.scss)})
+    return gulp.src(vendorincludes.scssCopy.concat([paths.sassFilesGlob]))
+        .pipe(sass({includePaths: [paths.sassPartialsFolderName].concat(vendorincludes.scssInclude)})
             .on('error', sass.logError))
-        .pipe(postcss(plugins))
+        .pipe(mode.production(postcss(plugins)))
+        .pipe(mode.production(purgecss({content: [paths.siteHtmlFilesGlob]})))
         .pipe(gulp.dest(paths.jekyllCssFiles))
         .pipe(gulp.dest(paths.siteCssFiles));
 }
@@ -32,9 +38,10 @@ function cleanStyles() {
 
 // javascript
 function buildJs() {
-    return gulp.src([paths.jsFilesGlob].concat(vendorincludes.js))
+    return gulp.src(vendorincludes.jsMerge.concat([paths.jsFilesGlob]))
         .pipe(concat('main.js'))
-        .pipe(uglify())
+        .pipe(gulp.src([`${vendorincludes.jsCopy}`],{allowEmpty: true}))
+        .pipe(mode.production(uglify()))
         .pipe(gulp.dest(paths.jekyllJsFiles))
         .pipe(gulp.dest(paths.siteJsFiles)); 
 }
@@ -60,7 +67,7 @@ function cleanImages() {
 
 // fonts
 function buildFonts() {
-    return gulp.src([paths.fontFilesGlob].concat(vendorincludes.fonts))
+    return gulp.src([paths.fontFilesGlob].concat(vendorincludes.fontCopy))
         .pipe(gulp.dest(paths.jekyllFontFiles))
         .pipe(gulp.dest(paths.siteFontFiles));
 }
