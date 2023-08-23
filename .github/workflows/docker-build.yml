@@ -4,14 +4,9 @@ on:
   push:
     branches: 
       - 'main'
-    paths:
-      - 'Dockerfile'
   pull_request:
     branches:
       - 'main'
-    paths:
-      - 'Dockerfile'
-  release:
 
 jobs:
   push_to_registry:
@@ -33,9 +28,14 @@ jobs:
       with:
         images: thealexwheeler/jssf
         tags: |
+          type=schedule
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
           type=semver,pattern={{major}}
+          type=ref,event=branch
+          type=ref,event=tag
+          type=ref,event=pr
+          type=sha
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
