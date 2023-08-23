@@ -1,4 +1,4 @@
-This repo is a starter framework for Jekyll static site builder which has a standard install of Jekyll, an NPM-based command structure, a Gulp-powered content pipeline, and a containerised Docker build environment.  Dependencies are managed through NPM and include Bootstrap and FontAwesome by default.
+This repo is a starter framework for Jekyll static site builder which has a standard install of Jekyll, an NPM-based command structure, a Gulp-powered content pipeline, and a containerised Docker build environment.  Dependencies are managed through NPM.
 
 You should use this repo if you need any of the following things:
 * static website

@@ -16,8 +16,8 @@ var browserSync = require('browser-sync').create();
 function buildStyles() {
     var plugins = [autoprefixer(),
         cssnano()]
-    return gulp.src(`${paths.sassFilesGlob}`)
-        .pipe(sass({includePaths: [paths.sassPartialsFolderName].concat(vendorincludes.scss)})
+    return gulp.src(vendorincludes.scssCopy.concat([paths.sassFilesGlob]))
+        .pipe(sass({includePaths: [paths.sassPartialsFolderName].concat(vendorincludes.scssInclude)})
             .on('error', sass.logError))
         .pipe(postcss(plugins))
         .pipe(gulp.dest(paths.jekyllCssFiles))
@@ -32,8 +32,9 @@ function cleanStyles() {
 
 // javascript
 function buildJs() {
-    return gulp.src([paths.jsFilesGlob].concat(vendorincludes.js))
+    return gulp.src(vendorincludes.jsMerge.concat([paths.jsFilesGlob]))
         .pipe(concat('main.js'))
+        .pipe(gulp.src(vendorincludes.jsCopy))
         .pipe(uglify())
         .pipe(gulp.dest(paths.jekyllJsFiles))
         .pipe(gulp.dest(paths.siteJsFiles)); 
@@ -60,7 +61,7 @@ function cleanImages() {
 
 // fonts
 function buildFonts() {
-    return gulp.src([paths.fontFilesGlob].concat(vendorincludes.fonts))
+    return gulp.src([paths.fontFilesGlob].concat(vendorincludes.fontCopy))
         .pipe(gulp.dest(paths.jekyllFontFiles))
         .pipe(gulp.dest(paths.siteFontFiles));
 }
