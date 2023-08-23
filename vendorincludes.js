@@ -11,8 +11,8 @@ vendorincludes.scssCopy = [];
 // Specify vendor js that will be merged into to the main javascript file
 vendorincludes.jsMerge = [];
 
-// Specify vendor js to be copied from source folder
-vendorincludes.jsCopy = [];
+// Specify vendor js to be copied from source folder (replace the void glob placeholder)
+vendorincludes.jsCopy = ['void'];
 
 // Specify vendor fonts to be copied to the fonts folder
 vendorincludes.fontCopy = [];
