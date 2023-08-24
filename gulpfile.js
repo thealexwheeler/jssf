@@ -106,7 +106,7 @@ function cleanImages() {
 
 // fonts
 function buildFonts() {
-    return gulp.src([paths.fontFilesGlob].concat(vendorincludes.fontCopy))
+    return gulp.src([paths.fontFilesGlob].concat(vendorincludes.fontCopy),{allowEmpty: true})
         .pipe(gulp.dest(paths.jekyllFontFiles))
         .pipe(gulp.dest(paths.siteFontFiles));
 }
