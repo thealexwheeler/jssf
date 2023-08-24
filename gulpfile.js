@@ -1,20 +1,21 @@
-var paths = require('./gulppaths');
-var vendorincludes = require('./vendorincludes');
-var gulp = require('gulp');
-var run = require('gulp-run');
-var clean = require('gulp-clean');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass')(require('sass'));
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var cssnano = require ('cssnano');
-var uglify = require('gulp-uglify');
-var purgecss = require('gulp-purgecss');
-var mode = require('gulp-mode')({
-    modes: ["production", "development"],
-    default: "development"
-});
-var browserSync = require('browser-sync').create();
+var paths           = require('./gulppaths');
+var vendorincludes  = require('./vendorincludes');
+var gulp            = require('gulp');
+var run             = require('gulp-run');
+var clean           = require('gulp-clean');
+var concat          = require('gulp-concat');
+var sass            = require('gulp-sass')(require('sass'));
+var postcss         = require('gulp-postcss');
+var autoprefixer    = require('autoprefixer');
+var cssnano         = require ('cssnano');
+var imagemin        = require('gulp-imagemin');
+var uglify          = require('gulp-uglify');
+var purgecss        = require('gulp-purgecss');
+var mode            = require('gulp-mode')({
+                        modes: ["production", "development"],
+                        default: "development"
+                    });
+var browserSync     = require('browser-sync').create();
 
 
 // styles
@@ -55,6 +56,7 @@ function cleanJs() {
 // images
 function buildImages() {
     return gulp.src(paths.imageFilesGlob)
+        .pipe(imagemin())
         .pipe(gulp.dest(paths.jekyllImageFiles))
         .pipe(gulp.dest(paths.siteImageFiles));
 }

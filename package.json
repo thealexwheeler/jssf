@@ -32,6 +32,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-cli": "^2.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "~7.1.0",
     "gulp-mode": "^1.1.0",
     "gulp-postcss": "^9.0.1",
     "gulp-purgecss": "^5.0.0",
