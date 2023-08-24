@@ -8,6 +8,7 @@ on:
     branches:
       - 'main'
 
+
 jobs:
   push_to_registry:
     name: Publish Docker image to Docker Hub
