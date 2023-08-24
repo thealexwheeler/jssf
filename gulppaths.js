@@ -60,6 +60,8 @@ paths.fontFilesGlob  = paths.fontFiles  + paths.fontPattern;
 paths.jekyllCssFilesGlob  = paths.jekyllCssFiles  + paths.sassPattern;
 paths.jekyllJsFilesGlob    = paths.jekyllJsFiles    + paths.jsPattern;
 paths.jekyllImageFilesGlob = paths.jekyllImageFiles + paths.imagePattern;
+paths.vectorImageFilesGlob = paths.imageFiles + paths.vectorImagePattern;
+paths.rasterImageFilesGlob = paths.imageFiles + paths.rasterImagePattern;
 paths.jekyllFontFilesGlob  = paths.jekyllFontFiles  + paths.fontPattern;
 
 // Site asset files globs
