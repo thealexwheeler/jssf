@@ -11,6 +11,7 @@ var cssnano         = require ('cssnano');
 var imagemin        = require('gulp-imagemin');
 var uglify          = require('gulp-uglify');
 var purgecss        = require('gulp-purgecss');
+var sharpResponsive = require('gulp-sharp-responsive')
 var mode            = require('gulp-mode')({
                         modes: ["production", "development"],
                         default: "development"
@@ -57,6 +58,14 @@ function cleanJs() {
 function buildImages() {
     return gulp.src(paths.imageFilesGlob)
         .pipe(imagemin())
+        .pipe(sharpResponsive({formats: [
+            { width: 576, rename: { suffix: "-xs" }, format: "webp", sharp:{ withoutEnlargement: true}},
+            { width: 768, rename: { suffix: "-sm" }, format: "webp", sharp:{ withoutEnlargement: true}},
+            { width: 992, rename: { suffix: "-md" }, format: "webp", sharp:{ withoutEnlargement: true}},
+            { width: 1200, rename: { suffix: "-lg" }, format: "webp", sharp:{ withoutEnlargement: true}},
+            { width: 1400, rename: { suffix: "-xl" }, format: "webp", sharp:{ withoutEnlargement: true}},
+            { width: 2000, rename: { suffix: "-xxl" }, format: "webp", sharp:{ withoutEnlargement: true}}
+        ], includeOriginalFile: true}))
         .pipe(gulp.dest(paths.jekyllImageFiles))
         .pipe(gulp.dest(paths.siteImageFiles));
 }
