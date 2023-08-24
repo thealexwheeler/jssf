@@ -41,6 +41,8 @@ paths.siteFontFiles  = paths.siteAssetsDir + paths.fontFolderName;
 // Glob patterns by file type
 paths.sassPattern     = '/**/*.+(scss|css)';
 paths.jsPattern       = '/**/*.js';
+paths.vectorImagePattern = '/**/*.+(svg|SVG)';
+paths.rasterImagePattern = '/**/*.+(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|webp|WEBP|tif|TIF)';
 paths.imagePattern    = '/**/*.+(jpg|JPG|jpeg|JPEG|png|PNG|svg|SVG|gif|GIF|webp|WEBP|tif|TIF)';
 paths.markdownPattern = '/**/*.+(md|MD|markdown|MARKDOWN)';
 paths.htmlPattern     = '/**/*.html';
