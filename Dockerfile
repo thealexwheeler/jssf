@@ -14,6 +14,7 @@ RUN apt-get update \
 		ruby \
         ruby-dev \
         npm \
+	rsync \
     #
     # Install gulp-cli (globally)
     && npm install --global gulp-cli \
