@@ -41,6 +41,8 @@ paths.siteFontFiles  = paths.siteAssetsDir + paths.fontFolderName;
 // Glob patterns by file type
 paths.sassPattern     = '/**/*.+(scss|css)';
 paths.jsPattern       = '/**/*.js';
+paths.vectorImagePattern = '/**/*.+(svg|SVG)';
+paths.rasterImagePattern = '/**/*.+(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|webp|WEBP|tif|TIF)';
 paths.imagePattern    = '/**/*.+(jpg|JPG|jpeg|JPEG|png|PNG|svg|SVG|gif|GIF|webp|WEBP|tif|TIF)';
 paths.markdownPattern = '/**/*.+(md|MD|markdown|MARKDOWN)';
 paths.htmlPattern     = '/**/*.html';
@@ -58,6 +60,8 @@ paths.fontFilesGlob  = paths.fontFiles  + paths.fontPattern;
 paths.jekyllCssFilesGlob  = paths.jekyllCssFiles  + paths.sassPattern;
 paths.jekyllJsFilesGlob    = paths.jekyllJsFiles    + paths.jsPattern;
 paths.jekyllImageFilesGlob = paths.jekyllImageFiles + paths.imagePattern;
+paths.vectorImageFilesGlob = paths.imageFiles + paths.vectorImagePattern;
+paths.rasterImageFilesGlob = paths.imageFiles + paths.rasterImagePattern;
 paths.jekyllFontFilesGlob  = paths.jekyllFontFiles  + paths.fontPattern;
 
 // Site asset files globs
